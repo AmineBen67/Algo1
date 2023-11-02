@@ -1,3 +1,5 @@
+<h1>Exercice 10</h1>
+
 <?php
 $sexe = "F";
 $age = 32;
