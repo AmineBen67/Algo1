@@ -1,10 +1,10 @@
 <?php
 
-$nomsInput=array("NOM","Prénom","email","Ville","sexe");
-$postes=array("Développeur Logiciel"=>"","Designer Web"=>"","Intégrateur"=>"","Chef de projet"=>"");
+$nomsInput=array("NOM","Prénom","email","Ville");
+$postes=array("Développeur Logiciel","Designer Web","Intégrateur","Chef de projet");
 $sexe=array("Homme","Femme");
 
-afficherFormulaire($nomsInput, $postes);
+afficherFormulaire($nomsInput, $sexe, $postes);
 
 function afficherInput($nomsInput) {
     foreach($nomsInput as $formulaire){
@@ -13,16 +13,26 @@ function afficherInput($nomsInput) {
     }
 }
 
-function afficherRadio($postes){
-    foreach($postes as $cle => $checked){
-        echo "<input type='radio' id='$cle' name='postes'>";
-        echo "<label for='$cle'>$cle</label><br>";
+function afficherMetiers($postes){
+    echo "<select>";
+    foreach($postes as $cle){
+        echo"<option> $cle </option>";     
+    }
+        echo "</select>";
+}
+
+function afficherGenre($sexe){
+    foreach($sexe as $genre){
+        echo "<input type='radio' id='$genre' name='civilte' value='$genre'>";
+        echo "<label for='$genre'>$genre</label><br>";
     }
 }
 
-function afficherFormulaire($nomsInput, $postes) {
+function afficherFormulaire($nomsInput, $sexe, $postes) {
     afficherInput($nomsInput);
     echo "<br>";
-    afficherRadio($postes);
+    afficherGenre($sexe);
+    echo "<br>";
+    afficherMetiers($postes);
     echo "<input type='submit' value='Valider'>";
 }
