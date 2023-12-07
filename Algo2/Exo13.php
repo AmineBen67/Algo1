@@ -11,8 +11,8 @@ class Voiture {
         $this->_marque = $marque;
         $this->_modele = $modele;
         $this->_nbePortes = $nbePortes;
-        $this->isDemaree = true;
-        $this->vitesseActuelle = 20;
+        $this->isDemaree = false;
+        $this->vitesseActuelle = 0;
     }
     public function getMarque(){
         return $this->_marque;
@@ -58,19 +58,25 @@ class Voiture {
     }
 
     public function ralentir(int $vitesse){
-            $this->vitesseActuelle = $this->vitesseActuelle - $vitesse;
-        if($this->vitesseActuelle<0)
+        if($this->isDemaree)
         {
-            echo "La vitesse du véhicule ne peut être négative";
+            if($this->vitesseActuelle - $vitesse > 0) {
+                $this->vitesseActuelle = $this->vitesseActuelle - $vitesse;
+                echo "le véhicule a bien ralenti de $vitesse km/h";
+            } else {
+                $this->vitesseActuelle = 0;
+                echo "La vitesse du véhicule ne peut être négative";
+            }
         }
         else{
-            echo "le véhicule a bien ralenti de $vitesse km/h";
+            echo "le véhicule doit être démarré";
         }       
         }
 }
 
 $v1 = new Voiture("Peugeot","408",5);
 $v2 = new Voiture("Citroën","C4",3);
+$v1->demarrer();
+$v2->accelerer(50);
 $v1->ralentir(10);
 echo"<br>";
-$v2->accelerer(50);
