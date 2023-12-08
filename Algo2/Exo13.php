@@ -38,8 +38,6 @@ class Voiture {
         return $this->vitesseActuelle;
     }
     
-
-
     public function demarrer(){
         $this->isDemaree = true;
     }
@@ -53,7 +51,6 @@ class Voiture {
             else {
                 echo "le véhicule n'a pas encore démarré<br>";
             }
-    
     }
 
     public function stopper(){
